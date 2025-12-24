@@ -1,520 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+    <meta name="title" content="CSC-AADNet: Addressing Cross-Subject and Cross-Scenario Challenges in EEG-based Auditory Attention Decoding">
+    <meta name="description" content="CSC-AADNet: A cross-calibrated network for EEG-based auditory attention decoding.">
+    <meta name="keywords" content="EEG, Auditory Attention Decoding, AAD, Brain-Computer Interface, Deep Learning, PolyU, MIND LAB">
+    <meta name="author" content="Zhige Chen, Jibin Wu">
 
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="MIND LAB - PolyU">
+    <meta property="og:title" content="CSC-AADNet">
+    <meta property="og:description" content="Robust EEG Auditory Attention Decoding with CSC-AADNet.">
+    <meta property="og:image" content="./static/images/method_overview.png">
 
+    <title>CSC-AADNet | MIND LAB PolyU</title>
 
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script defer src="static/js/index.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAFAFA; /* 极浅灰色背景 */
+            color: #4a4a4a;
         }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
+
+        /* 矩形卡片样式 */
+        .custom-card {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* 柔和阴影 */
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #EAEAEA;
         }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
+
+        .publication-title {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .publication-venue {
+            color: #666;
+            font-weight: 600;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* 按钮样式微调 */
+        .button.is-dark {
+            background-color: #363636;
+            transition: all 0.2s ease;
+        }
+
+            .button.is-dark:hover {
+                background-color: #000;
+                transform: translateY(-2px);
+            }
+
+        /* 表格样式 */
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+            .results-table thead tr {
+                background-color: #f5f5f5;
+                color: #333;
+                text-align: left;
+                font-weight: bold;
+            }
+
+            .results-table th, .results-table td {
+                padding: 12px 15px;
+                border-bottom: 1px solid #ddd;
+                text-align: center;
+            }
+
+            .results-table tbody tr:nth-of-type(even) {
+                background-color: #fcfcfc;
+            }
+
+            .results-table tbody tr:last-of-type {
+                border-bottom: 2px solid #363636;
+            }
+
+        .best-score {
+            font-weight: bold;
+            color: #209CEE;
+        }
+
+        /* BibTeX 样式 */
+        .bibtex-section {
+            background-color: #f4f6f8;
+            border-left: 5px solid #3273dc;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        /* 图片容器 */
+        .image-container {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* 标题下划线装饰 */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem !important;
+        }
+
+        /* === 按钮强力美化修复 === */
+        .publication-links .button {
+            background-color: #363636 !important; /* 强制深灰色背景 */
+            color: #ffffff !important; /* 强制白色文字 */
+            border-radius: 30px !important; /* 强制大圆角（胶囊形） */
+            padding: 10px 25px !important; /* 增加内部留白，显得宽敞 */
+            border: 1px solid transparent !important;
+            text-decoration: none !important; /* 去掉丑陋的下划线 */
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important; /* 平滑动画 */
+            margin: 5px !important; /* 按钮之间的间距 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 轻微阴影 */
+        }
+
+            /* 鼠标悬停效果 */
+            .publication-links .button:hover {
+                background-color: #000000 !important; /* 悬停变纯黑 */
+                color: #ffffff !important;
+                transform: translateY(-2px); /* 轻微上浮 */
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* 阴影加深 */
+            }
+
+        /* 图标和文字的间距 */
+        .publication-links .icon {
+            margin-right: 6px;
+        }
+
+        /* 修复可能存在的 visited 链接颜色问题 */
+        .publication-links a:visited {
+            color: #ffffff !important;
+        }
+
+        /* === 布局强力修复 (Layout Fixes) === */
+
+        /* 1. 限制最大宽度，防止网页太宽 */
+        .container.is-max-desktop {
+            max-width: 900px !important; /* 强制最大宽度为 900px */
+            margin-left: auto !important;
+            margin-right: auto !important;
+            width: 95% !important; /* 在手机上保留边距 */
+        }
+
+        /* 2. 强制内容区域居中 */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 垂直方向的内容也居中 */
+            width: 100%;
+            overflow-x: hidden; /* 防止横向滚动条 */
+        }
+
+        section {
+            width: 100%;
+            display: flex;
+            justify-content: center; /* 确保 section 内部的内容居中 */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 3. 修复卡片不居中的问题 */
+        .custom-card {
+            margin-left: auto !important;
+            margin-right: auto !important;
+            max-width: 900px !important; /* 与容器同宽 */
+        }
+
+        /* 4. 修复标题和图片的居中 */
+        .publication-title,
+        .publication-venue,
+        .publication-authors,
+        .section-title {
+            text-align: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        /* 5. 确保图片容器居中 */
+        .publication-image, .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px auto; /* 上 0, 左右自动, 下 20px */
+        }
+
+        /* 6. 修复表格居中 */
+        .table-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* === 布局调整：设置为屏幕宽度的 75% === */
+        @media screen and (min-width: 1024px) {
+            .container.is-max-desktop {
+                max-width: 75% !important; /* 强制最大宽度为 75% */
+                width: 75% !important; /* 强制宽度为 75% */
+            }
+        }
+
+        /* === 修复按钮被遮挡的问题 === */
+        section.section {
+            margin-top: 0 !important;
+        }
+
+        .hero-body {
+            padding-bottom: 5rem !important;
+        }
+
+        .publication-links {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* === 修复按钮组不居中 === */
+        .publication-links {
+            display: flex !important; /* 强制使用 Flex 布局 */
+            justify-content: center !important; /* 强制水平居中 */
+            flex-wrap: wrap !important; /* 屏幕窄时允许换行 */
+            gap: 10px; /* 按钮之间的间距（替代原本的 margin） */
+        }
+
+            .publication-links .button {
+                margin: 0 !important;
+            }
+
+        /* === Usage Guide Section Styles === */
+        .usage-step {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+            .usage-step:last-child {
+                margin-bottom: 0;
+            }
+
+        /* 步骤标题样式 */
+        .step-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #363636;
+            margin-bottom: 1.2rem;
+        }
+
+        /* 圆形数字图标 */
+        .step-number {
+            background-color: #363636;
+            color: #ffffff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* 仿终端代码窗口 */
+        .code-window {
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f6f8fa;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            text-align: left; /* 强制代码左对齐 */
+        }
+
+        .code-header {
+            background-color: #f1f3f5;
+            padding: 8px 15px;
+            border-bottom: 1px solid #e1e4e8;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.85rem;
+            color: #586069;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 窗口左上角的三个小点 */
+        .window-dots {
+            display: flex;
+            gap: 6px;
+            margin-right: 12px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background-color: #ff5f56;
+        }
+
+        .dot-yellow {
+            background-color: #ffbd2e;
+        }
+
+        .dot-green {
+            background-color: #27c93f;
+        }
+
+        /* 代码内容区域 */
+        .code-body {
+            padding: 15px;
+            overflow-x: auto;
+            background-color: #fff;
+        }
+
+            .code-body pre {
+                background: transparent;
+                padding: 0;
+                margin: 0;
+            }
+
+        /* 选中的 Fold 标签 */
+        .fold-tag {
+            display: inline-block;
+            background-color: #effaf5;
+            color: #257942;
+            border: 1px solid #bddcc6;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .param-highlight {
+            color: #d73a49; /* 代码参数高亮色 */
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
 
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
 
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
+                        <h1 class="title is-1 publication-title">
+                            <span style="color:#FF6B6B">CSC</span>-<span style="color:#4ECDC4">AADNet</span>: <br>
+                            Addressing Cross-Subject and Cross-Scenario Challenges in EEG-based Auditory Attention Decoding
+                        </h1>
 
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
-    </div>
-  </div>
+                        <div class="publication-venue is-size-4">
+                            <span>Winner in ICASSP 2026 EEG-AAD Challenge</span>
+                        </div>
 
-  <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="#">Zhige Chen</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="#">Jibin Wu</a><sup>2,*</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="#">Scz Chi Chiu</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="#">Peng Shu</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="#">Wenlong You</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="#">Jiachen Xi</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="#">Rui Liu</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="#">Ruofan Yan</a><sup>1</sup>
+                            </span>
+                        </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
+                        <div class="is-size-6 publication-authors" style="margin-top: 15px; color: #555;">
+                            <span class="author-block"><sup>1</sup>Department of Data Science and Artificial Intelligence, <br> The Hong Kong Polytechnic University</span><br>
+                            <span class="author-block"><sup>2</sup>Department of Computing, The Hong Kong Polytechnic University</span>
+                            <br>
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
+                            <span class="author-block" style="margin-top: 20px; display: inline-block;">
+                                <a href="https://www.mindlab-ai.com/" target="_blank" style="color: #A02337; font-weight: 700; text-decoration: none; font-size: 1.5rem; display: inline-flex; align-items: center; transition: transform 0.2s;">
+                                    <img src="static/images/Mind_Lab.avif" alt="MIND LAB" style="height: 60px; margin-right: 12px; vertical-align: middle;">
+                                    MIND LAB
+                                </a>
+                            </span>
+                            <br>
 
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
+                        </div>
 
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
+                        <div class="column has-text-centered" style="margin-top: 40px;">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a href="./static/pdfs/paper.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
 
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
+                                <span class="link-block">
+                                    <a href="https://github.com/OrangePOP/CSC-AADNet" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+
+                                <span class="link-block">
+                                    <a href="https://fchest.github.io/icassp-aad" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-trophy"></i>
+                                        </span>
+                                        <span>Leaderboard</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
+    <section class="section">
+        <div class="container is-max-desktop">
 
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
+            <div class="custom-card">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths">
+                        <div class="content has-text-justified">
+                            <p>
+                                This project page presents an overview of <strong>CSC-AADNet</strong>, our solution submitted to the <strong>ICASSP 2026 EEG Auditory Attention Decoding Challenge</strong>. The goal of this work is to achieve robust attention decoding from electroencephalography (EEG) under multi-modal conditions.
+                            </p>
+                            <p>
+                                We introduce a cross-calibrated network designed to mitigate spatio-temporal distribution shifts. Our method leverages unsupervised covariance alignment and lightweight normalization to handle the data heterogeneity.
+                            </p>
+                            <p>
+                                To further enhance robustness, we incorporate stability-aware training combined with ensemble inference. As demonstrated in our experiments, CSC-AADNet effectively improves generalization across both different subjects and recording sessions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
 
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
+        <div class="custom-card">
+            <h2 class="title is-3 has-text-centered section-title">Method Overview</h2>
+            <div class="publication-image image-container" style="text-align: center;">
+                <img src="static/images/method_overview.png" alt="CSC-AADNet Architecture" style="width: 100%; max-width: 900px;">
+            </div>
+            <br>
+            <div class="content has-text-justified is-size-6" style="background-color: #f9f9f9; padding: 15px; border-radius: 6px;">
+                <ul>
+                    <strong>(A) Cross-Calibrated Block:</strong> Tackles cross-subject and cross-session data shift via subject-level calibration, temporal smoothing, and channel-wise normalization.</li>
+                    <strong>(B) Stability-Aware Training:</strong> Enhances robustness by optimizing for stable predictions during training iterations.</li>
+                    <strong>(C) Model Ensemble:</strong> Aggregates predictions from top-k models to reduce variance and improve accuracy on unseen subjects.</li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
 
+    </section>
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="custom-card">
+                <h2 class="title is-3 has-text-centered section-title">Usage Guide</h2>
+
+                <div class="content">
+
+                    <div class="usage-step">
+                        <div class="step-title">
+                            <span class="step-number">1</span>
+                            Quick Start: Training
+                        </div>
+                        <p class="has-text-justified">
+                            Download the ICASSP 2026 dataset and configure the data path in <code>trainer_all_ensemble.py</code>.
+                            You can also customize the preprocessing pipeline in the <code>getData</code> function (e.g., normalization, smoothing).
+                        </p>
+
+                        <div class="code-window">
+                            <div class="code-header">
+                                <div class="window-dots">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <i class="far fa-file-code" style="margin-right: 8px;"></i> trainer_all_ensemble.py
+                            </div>
+                            <div class="code-body">
+<pre><code class="language-python"># 1. Set your dataset path
+DATA_PATH = 'your_local_path/to/dataset/'
+
+# 2. Configure preprocessing (Default settings)
+seq_alldata_ao, alllabel_ao = getData(
+    args, 
+    audio_only_sub_ids,
+    channel_normalization=True,   # Z-score normalization
+    smoothing=True,               # Temporal smoothing
+    ma_window=3                   # Moving average window size
+)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="usage-step">
+                        <div class="step-title">
+                            <span class="step-number">2</span>
+                            Model Selection Strategy
+                        </div>
+                        <div class="columns is-vcentered">
+                            <div class="column is-7">
+                                <p class="has-text-justified">
+                                    We employ a rigorous selection process based on the generated <code>Loss_Acc.png</code> figures for each fold.
+                                    Models are selected based on <strong>convergence stability</strong> and <strong>validation accuracy</strong>.
+                                </p>
+                            </div>
+                            <div class="column is-5">
+                                <div class="box has-text-centered" style="background-color: #fafafa; border: 1px dashed #dbdbdb;">
+                                    <p class="is-size-7 has-text-grey has-text-weight-bold is-uppercase" style="margin-bottom: 8px;">Selected Folds</p>
+                                    <div>
+                                        <span class="fold-tag">Fold 1</span>
+                                        <span class="fold-tag">Fold 2</span>
+                                        <span class="fold-tag">Fold 5</span>
+                                        <br>
+                                        <span class="fold-tag">Fold 8</span>
+                                        <span class="fold-tag">Fold 9</span>
+                                        <span class="fold-tag">Fold 10</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="usage-step">
+                        <div class="step-title">
+                            <span class="step-number">3</span>
+                            Ensemble Inference
+                        </div>
+                        <p class="has-text-justified">
+                            To reproduce our submission results, gather the checkpoints from the selected folds into a directory.
+                            Update <code>inference.py</code> to point to these models and your test data.
+                        </p>
+
+                        <div class="code-window">
+                            <div class="code-header">
+                                <div class="window-dots">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <i class="far fa-file-code" style="margin-right: 8px;"></i> inference.py
+                            </div>
+                            <div class="code-body">
+<pre><code class="language-python"># Path to the directory containing selected .pt files
+args.model_dir = "/path/to/your/selected_models/" 
+
+# Path to the test dataset
+args.data_path = "/path/to/test_data/"
+
+# Run inference
+# python inference.py</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
+    </section>
+
+    <footer class="footer" style="background-color: #f5f5f5; padding: 3rem 1.5rem;">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content has-text-centered">
+                        <p>
+                            Research conducted at <a href="https://www.mindlab-ai.com/" target="_blank" style="color: #209CEE; ">MIND LAB</a>, The Hong Kong Polytechnic University.
+                        </p>
+                        <p style="font-size: 0.9em; color: gray;">
+                            This page was adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
+    </footer>
 
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
-}</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>
