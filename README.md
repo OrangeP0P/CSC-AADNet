@@ -1,1 +1,1 @@
-# Academic Project Page Template
+# Website of CSC-AADNet
